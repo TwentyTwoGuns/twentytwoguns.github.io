@@ -778,6 +778,12 @@ a {
   -moz-background-size: 80%;
   background-size: 80%;
 }
+#header .header-nav .social .GitHub {
+  background: url("/img/GitHub.png") center no-repeat #000;
+  -webkit-background-size: 82%;
+  -moz-background-size: 82%;
+  background-size: 82%;
+}
 #header .header-nav .social .知乎 {
   background: url("/img/知乎.png") center no-repeat #0078d8;
   -webkit-background-size: 90%;
