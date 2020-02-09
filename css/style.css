@@ -783,7 +783,7 @@ a {
   background-size: 80%;
 }
 #header .header-nav .social .GitHub {
-  background: url("/img/GitHub.png") center no-repeat #000;
+  background: url("/img/GitHub.png") center no-repeat #fff;
   -webkit-background-size: 82%;
   -moz-background-size: 82%;
   background-size: 82%;
