@@ -20,20 +20,22 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言本文介绍Java的基本数据类型与其对应的包装类型，以及装箱与拆箱。">
+  <meta name="description" content="前言泛型，广泛使用于集合框架中。在Java面试时，面试官经常会提到泛型。本文对泛型进行介绍，并总结了Java泛型的常见面试题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基本数据类型">
-<meta property="og:url" content="http://yoursite.com/2020/03/14/Java%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:title" content="理解Java泛型">
+<meta property="og:url" content="http://yoursite.com/2020/06/28/%E7%90%86%E8%A7%A3Java%E6%B3%9B%E5%9E%8B/index.html">
 <meta property="og:site_name" content="TwentyTwoGuns">
-<meta property="og:description" content="前言本文介绍Java的基本数据类型与其对应的包装类型，以及装箱与拆箱。">
+<meta property="og:description" content="前言泛型，广泛使用于集合框架中。在Java面试时，面试官经常会提到泛型。本文对泛型进行介绍，并总结了Java泛型的常见面试题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-14T06:35:10.000Z">
-<meta property="article:modified_time" content="2020-06-28T07:56:50.185Z">
+<meta property="og:image" content="http://yoursite.com/images/%E6%B3%9B%E5%9E%8B-ArrayList.png">
+<meta property="article:published_time" content="2020-06-28T07:59:10.000Z">
+<meta property="article:modified_time" content="2020-07-06T06:48:39.856Z">
 <meta property="article:author" content="TwentyTwoGuns">
 <meta property="article:tag" content="Java基础">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/%E6%B3%9B%E5%9E%8B-ArrayList.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/03/14/Java%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+<link rel="canonical" href="http://yoursite.com/2020/06/28/%E7%90%86%E8%A7%A3Java%E6%B3%9B%E5%9E%8B/">
 
 
 <script id="page-configurations">
@@ -45,7 +47,7 @@
   };
 </script>
 
-  <title>Java基本数据类型 | TwentyTwoGuns</title>
+  <title>理解Java泛型 | TwentyTwoGuns</title>
   
 
 
@@ -160,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/Java%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/28/%E7%90%86%E8%A7%A3Java%E6%B3%9B%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -173,7 +175,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Java基本数据类型
+          理解Java泛型
         </h1>
 
         <div class="post-meta">
@@ -183,14 +185,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-03-14 14:35:10" itemprop="dateCreated datePublished" datetime="2020-03-14T14:35:10+08:00">2020-03-14</time>
+              <time title="创建时间：2020-06-28 15:59:10" itemprop="dateCreated datePublished" datetime="2020-06-28T15:59:10+08:00">2020-06-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-28 15:56:50" itemprop="dateModified" datetime="2020-06-28T15:56:50+08:00">2020-06-28</time>
+                <time title="修改时间：2020-07-06 14:48:39" itemprop="dateModified" datetime="2020-07-06T14:48:39+08:00">2020-07-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,167 +224,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍Java的基本数据类型与其对应的包装类型，以及装箱与拆箱。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>泛型，广泛使用于集合框架中。在Java面试时，面试官经常会提到泛型。本文对泛型进行介绍，并总结了Java泛型的常见面试题。</p>
 <a id="more"></a>
 
-<p>Java包含8个基本数据类型，基本类型都有对应的包装类型，基本类型与其对应的包装类型之间的赋值使用自动装箱与拆箱完成。</p>
-<h2 id="Java基本数据类型与包装类"><a href="#Java基本数据类型与包装类" class="headerlink" title="Java基本数据类型与包装类"></a>Java基本数据类型与包装类</h2><table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th>大小</th>
-<th>包装类</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>boolean</td>
-<td>/</td>
-<td>Boolean</td>
-</tr>
-<tr>
-<td>byte</td>
-<td>1个字节</td>
-<td>Byte</td>
-</tr>
-<tr>
-<td>char</td>
-<td>2个字节</td>
-<td>Character</td>
-</tr>
-<tr>
-<td>short</td>
-<td>2个字节</td>
-<td>Short</td>
-</tr>
-<tr>
-<td>int</td>
-<td>4个字节</td>
-<td>Integer</td>
-</tr>
-<tr>
-<td>long</td>
-<td>8个字节</td>
-<td>Long</td>
-</tr>
-<tr>
-<td>float</td>
-<td>4个字节</td>
-<td>Float</td>
-</tr>
-<tr>
-<td>double</td>
-<td>8个字节</td>
-<td>Double</td>
-</tr>
-</tbody></table>
-<p>boolean类型：JVM在编译时将boolean类型的数据转换为int，1表示true，0表示false；若是boolean数组，通过byte数组来实现的。</p>
-<p><strong>为什么Java有包装类：</strong></p>
-<p>因为Java的基本数据类型不是对象，无法向上转型使用Object提供的方法。<br>例如，需要将String类型转换为int类型，由于String是一个对象而不是类型，若没有包装类Integer则无法转型；集合中只存储对象(引用类型)，而不存储基本类型；多线程中的同步操作的也是对象。</p>
-<h2 id="装箱与拆箱"><a href="#装箱与拆箱" class="headerlink" title="装箱与拆箱"></a>装箱与拆箱</h2><p><strong>装箱：</strong> 自动将基本数据类型转换为包装类型。</p>
-<p><strong>拆箱：</strong> 自动将包装类型转换为基本数据类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer i &#x3D; 10; &#x2F;&#x2F;装箱, 自动调用Integer的valueOf(10)方法</span><br><span class="line">int x &#x3D; i; &#x2F;&#x2F;拆箱, 自动调用Integer的intValue方法,int x &#x3D; i.intValue</span><br></pre></td></tr></table></figure>
+<h2 id="什么是泛型-–-问题1"><a href="#什么是泛型-–-问题1" class="headerlink" title="什么是泛型 – 问题1"></a>什么是泛型 – 问题1</h2><p>泛型，即参数化的类型，参数化的类型是指将原来需要具体化的类型参数化，类似于方法中的变量参数，此时，变量参数的类型也定义成参数的形式。<br>例如，定义一个方法打印整数类型的数组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static void print(int[] array)</span><br></pre></td></tr></table></figure>
+<p>若我们需要定义一个方法打印任意类型的数组，类型由调用者自己传入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;E&gt; void pring(E[] array) &#x2F;&#x2F;E: 参数化的类型, 由调用者决定</span><br></pre></td></tr></table></figure>
 
-<h3 id="缓存池"><a href="#缓存池" class="headerlink" title="缓存池"></a>缓存池</h3><p>由于基本数据类型在自动装箱过程中会使用缓存机制提高效率，在缓存范围类相同值的自动装箱对象相同。</p>
-<p>基本类型对应的缓存池范围：</p>
-<table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th>大小</th>
-<th>包装类</th>
-<th>缓存范围</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>boolean</td>
-<td>/</td>
-<td>Boolean</td>
-<td>true, false</td>
-<td>全部缓存</td>
-</tr>
-<tr>
-<td>byte</td>
-<td>1个字节</td>
-<td>Byte</td>
-<td>-128~127</td>
-<td>全部缓存</td>
-</tr>
-<tr>
-<td>char</td>
-<td>2个字节</td>
-<td>Character</td>
-<td>0~127</td>
-<td>部分缓存</td>
-</tr>
-<tr>
-<td>short</td>
-<td>2个字节</td>
-<td>Short</td>
-<td>-128~127</td>
-<td>部分缓存</td>
-</tr>
-<tr>
-<td>int</td>
-<td>4个字节</td>
-<td>Integer</td>
-<td>-128~127</td>
-<td>部分缓存,上界可以通过JVM启动参数 -XX:AutoBoxCacheMax=<size> 来指定这个缓冲池的大小</td>
-</tr>
-<tr>
-<td>long</td>
-<td>8个字节</td>
-<td>Long</td>
-<td>-128~127</td>
-<td>部分缓存</td>
-</tr>
-<tr>
-<td>float</td>
-<td>4个字节</td>
-<td>Float</td>
-<td>/</td>
-<td>没有缓存</td>
-</tr>
-<tr>
-<td>double</td>
-<td>8个字节</td>
-<td>Double</td>
-<td>/</td>
-<td>没有缓存</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)&#123;</span><br><span class="line">    Integer a &#x3D; new Integer(123);&#x2F;&#x2F;每次都会创建一个新的对象, 不会触发自动装箱</span><br><span class="line">    Integer b &#x3D; new Integer(123);&#x2F;&#x2F;每次都会创建一个新的对象, 不会触发自动装箱</span><br><span class="line">    System.out.println(a &#x3D;&#x3D; b); &#x2F;&#x2F;false</span><br><span class="line">    Integer c &#x3D; Integer.valueOf(123); &#x2F;&#x2F;等价于Integer c &#x3D; 123;</span><br><span class="line">    Integer d &#x3D; Integer.valueOf(123); &#x2F;&#x2F;等价于Integer d &#x3D; 123;</span><br><span class="line">    System.out.println(c &#x3D;&#x3D; d);&#x2F;&#x2F;true</span><br><span class="line">    Integer e &#x3D; 123; &#x2F;&#x2F;装箱, 调用valueOf(123)</span><br><span class="line">    Integer f &#x3D; 123; &#x2F;&#x2F;装箱, 调用valueOf(123)</span><br><span class="line">    System.out.println(e &#x3D;&#x3D; f);&#x2F;&#x2F;true</span><br><span class="line">    Integer g &#x3D; 200; &#x2F;&#x2F;装箱，调用valueOf(200), 200超过了缓存池的大小, 会new Integer(200);</span><br><span class="line">    Integer h &#x3D; 200; &#x2F;&#x2F;装箱，调用valueOf(200), 200超过了缓存池的大小, 会new Integer(200);</span><br><span class="line">    System.out.println(g &#x3D;&#x3D; h);&#x2F;&#x2F;false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)&#123;</span><br><span class="line">    Integer a &#x3D; 1;</span><br><span class="line">    Integer b &#x3D; 2;</span><br><span class="line">    Integer c &#x3D; 3;</span><br><span class="line">    Integer d &#x3D; 3;</span><br><span class="line">    Integer e &#x3D; 321;</span><br><span class="line">    Integer f &#x3D; 321;</span><br><span class="line">    Long g &#x3D; 3L;</span><br><span class="line">    Long h &#x3D; 2L;</span><br><span class="line">    Double i1 &#x3D; 1.2;</span><br><span class="line">    Double i2 &#x3D; 1.2;</span><br><span class="line"></span><br><span class="line">    System.out.println(c&#x3D;&#x3D;(a+b)); &#x2F;&#x2F;true, a + b会触发自动拆箱, 调用intValue(), 因为+这个操作符不适用于Integer对象, c&#x3D;&#x3D;3, Integer对象无法与数值进行直接比较, 所以c自动拆箱转为int值3, 因此3 &#x3D;&#x3D; 3</span><br><span class="line">    System.out.println(c.equals(a+b));&#x2F;&#x2F;true, equals会触发自动装箱</span><br><span class="line">    System.out.println(g&#x3D;&#x3D;(a+b));&#x2F;&#x2F;true, 值相同，且在缓存范围内</span><br><span class="line">    System.out.println(g.equals(a+b));&#x2F;&#x2F;false, equals触发装箱时, 如果数值是int型, 则调用Integer.valueOf();如果数值是long型, 则调用Long.valueOf()</span><br><span class="line">    System.out.println(g.equals(a+h));&#x2F;&#x2F;true</span><br><span class="line">    System.out.println(i1 &#x3D;&#x3D; i2);&#x2F;&#x2F;false, Float,Double 并没有实现常量池技术</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>==与equals():</p>
-<table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th>==</th>
-<th>equals</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>非字符串变量</td>
-<td>对象在内存中的首地址</td>
-<td>对象在内存中的首地址</td>
-</tr>
-<tr>
-<td>字符串变量</td>
-<td>对象在内存中的首地址</td>
-<td>字符串内容</td>
-</tr>
-<tr>
-<td>基本类型</td>
-<td>值</td>
-<td>不可用</td>
-</tr>
-<tr>
-<td>包装类</td>
-<td>地址</td>
-<td>内容</td>
-</tr>
-</tbody></table>
+<p>例如，我们常使用Java容器就可以装各种类型的对象，这些类型可以是Java定义的类型，也可以是用户自定义的类型。下图为ArrayList容器定义源码：<br><img src="/images/%E6%B3%9B%E5%9E%8B-ArrayList.png" alt=""></p>
+<h3 id="为什么要使用泛型-–-问题2"><a href="#为什么要使用泛型-–-问题2" class="headerlink" title="为什么要使用泛型 – 问题2"></a>为什么要使用泛型 – 问题2</h3><p>在Java1.5之前，通过对类型Object的引用实现类型的任意化，并在使用前进行显式的强制类型转换，强制类型转换在可以预知的情况下进行，很不方便且容易在运行时出错，泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型，避免了在运行时出现ClassCastException。例如，我们现在向ArrayList中添加一些String类型的数据，在遍历的时候必须对取出来的元素进行转型，很容易出错。为了解决这个问题，我们可以为String类型写一个ArrayList，似乎就可以不进行类型转换，可是让我们试想一下，ArrayList是一个容器，可以添加各种类型的对象，我们不可能为每一种类型都写上一个ArrayList。因此，我们需要一个模板，这个模板可以支持添加任意类型的数据，就像我们英语考试之前希望背上一个万能模板，任意的主题都可以往里套，而不用为每一个类创建新的ArrayList。泛型就是这样一个模板，ArrayList&lt;T&lt;，T可以是任意类型。</p>
+<p>注意这里T不能转型为父类，如ArrayList&lt;Integer&lt;可以转型为List&lt;Integer&gt;，而不能转型为ArrayList&lt;Number&gt;，Number为Integer的父类。</p>
+<h3 id="类型擦除是什么-–-问题3"><a href="#类型擦除是什么-–-问题3" class="headerlink" title="类型擦除是什么 – 问题3"></a>类型擦除是什么 – 问题3</h3><p>泛型是通过类型擦除来实现的，Java的泛型是伪泛型，这是因为Java在编译期间，所有的泛型信息都会被擦除。Java的泛型基本上都是在编译器这个层次上实现的，在生成的字节码中是不包含泛型中的类型信息的，使用泛型的时候加上类型参数，在编译器编译的时候会去掉，这个过程成为类型擦除。例如，在代码中定义List&lt;Object&gt;和List&lt;String&gt;等类型，在编译后都会变成List，JVM看到的只是List，而由泛型附加的类型信息对JVM是看不到的。也就是说，再编译过程中，正确检验泛型结果后，会将泛型相关信息擦除，泛型信息不会进入到运行时阶段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        List&lt;String&gt; list1 &#x3D; new ArrayList&lt;String&gt;();</span><br><span class="line">        List&lt;Integer&gt; list2 &#x3D; new ArrayList&lt;Integer&gt;();</span><br><span class="line">        System.out.println(list1.getClass());&#x2F;&#x2F;class java.util.ArrayList</span><br><span class="line">        System.out.println(list2.getClass());&#x2F;&#x2F;class java.util.ArrayList</span><br><span class="line">        System.out.println(list1.getClass().equals(list2.getClass()));&#x2F;&#x2F;true</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型通配符（什么是泛型中的限定通配符和非限定通配符-–-问题4）"><a href="#泛型通配符（什么是泛型中的限定通配符和非限定通配符-–-问题4）" class="headerlink" title="泛型通配符（什么是泛型中的限定通配符和非限定通配符 – 问题4）"></a>泛型通配符（什么是泛型中的限定通配符和非限定通配符 – 问题4）</h2><p>在通常情况下，我们使用T、E、K、V、?来表示通配符。</p>
+<p>T：Type，具体的Java类型</p>
+<p>E：代表Element</p>
+<p>K， V：代表Java键值中的Key，Value</p>
+<p>?：表示不确定的Java类型</p>
+<p>限定通配符包括上界通配符、下界通配符，非限定通配符包括无界通配符。</p>
+<h3 id="上界通配符"><a href="#上界通配符" class="headerlink" title="上界通配符"></a>上界通配符</h3><p>? extends T表示上界通配符，指定了T为上界，?可以表示T的任意子类。</p>
+<h3 id="下界通配符"><a href="#下界通配符" class="headerlink" title="下界通配符"></a>下界通配符</h3><p>? super T表示下界通配符，指定了T为下界，?可以表示T的任意父类。 </p>
+<h3 id="无界通配符"><a href="#无界通配符" class="headerlink" title="无界通配符"></a>无界通配符</h3><p>无界通配符使用单独的?表示，当不确定类型时使用。例如List&lt;?&gt;，那它与List有什么区别呢? List&lt;?&gt;表示某种特定类型的List，但不知道具体的类型，无法添加对象。List所有的元素的类型是Object，可以添加任何类型的对象。</p>
 
     </div>
 
@@ -401,13 +265,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/29/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%AE%97%E6%B3%95/" rel="prev" title="最小生成树算法">
-      <i class="fa fa-chevron-left"></i> 最小生成树算法
+    <a href="/2020/03/28/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="prev" title="Java序列化与反序列化">
+      <i class="fa fa-chevron-left"></i> Java序列化与反序列化
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/28/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="next" title="Java序列化与反序列化">
-      Java序列化与反序列化 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -467,7 +328,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java基本数据类型与包装类"><span class="nav-number">2.</span> <span class="nav-text">Java基本数据类型与包装类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装箱与拆箱"><span class="nav-number">3.</span> <span class="nav-text">装箱与拆箱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存池"><span class="nav-number">3.1.</span> <span class="nav-text">缓存池</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是泛型-–-问题1"><span class="nav-number">2.</span> <span class="nav-text">什么是泛型 – 问题1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要使用泛型-–-问题2"><span class="nav-number">2.1.</span> <span class="nav-text">为什么要使用泛型 – 问题2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型擦除是什么-–-问题3"><span class="nav-number">2.2.</span> <span class="nav-text">类型擦除是什么 – 问题3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型通配符（什么是泛型中的限定通配符和非限定通配符-–-问题4）"><span class="nav-number">3.</span> <span class="nav-text">泛型通配符（什么是泛型中的限定通配符和非限定通配符 – 问题4）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上界通配符"><span class="nav-number">3.1.</span> <span class="nav-text">上界通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下界通配符"><span class="nav-number">3.2.</span> <span class="nav-text">下界通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无界通配符"><span class="nav-number">3.3.</span> <span class="nav-text">无界通配符</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
